@@ -1,0 +1,53 @@
+# BoardSnap config - copy to config.toml and change what you like.
+# Anything you leave out uses the default. Text fields can use these placeholders:
+#   {name} {version} {author} {step} {file}
+#   {nets} {routed} {unrouted} {airwires} {tracks} {vias} {parts}
+
+[project]
+name    = "NoctoBoard"
+version = "v0.5"
+author  = "Kingdragoncat"
+
+[text]
+title   = "{name} {version}  ·  step {step}"      # "step" part disappears when you don't pass --step
+caption = ""                                       # the line under the title (or pass --caption)
+corner  = "{routed} / {nets} nets routed"          # top-right
+footer  = "made by {author}"                       # bottom-left, "" to hide
+legend  = true
+font    = "monospace"
+
+[render]
+width_in   = 16
+height_in  = 12.4
+dpi        = 110
+margin_mm  = 3
+layers     = ["B.Cu", "F.Cu"]     # drawn bottom -> top
+zones      = "filled"             # filled | outline | none   (F.Cu / B.Cu pours)
+inner_zones = true                # hatched inner-layer islands (VMOT / 3V3 splits etc.)
+silkscreen = true
+courtyards = false
+references = false
+airwires   = true                 # dashed lines for connections that aren't routed yet
+
+[theme]
+preset = "night"                  # night | kicad | oshpark | paper
+# override single colours if you want:
+# board = "#0f3d24"
+# fcu   = "#d8343a"
+# bcu   = "#3b8fe0"
+
+# ---- timelapse: render a list of saved boards, then glue them into a GIF ----
+# python boardsnap.py --frames -c config.toml
+[gif]
+output       = "timelapse.gif"    # "" = no gif
+ms_per_frame = 1200
+hold_last_ms = 3000
+
+# [[frames]]
+# file    = "backups/board_placed.kicad_pcb"
+# caption = "everything placed"
+#
+# [[frames]]
+# file    = "backups/board_routed.kicad_pcb"
+# caption = "autorouted"
+# override = { theme = { preset = "kicad" } }      # per-frame tweaks
