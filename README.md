@@ -50,4 +50,4 @@ Save a copy of your board at each stage (`board_01_placed.kicad_pcb`, `board_02_
 2. **Airwires:** a connectivity check (union-find over pads, tracks, vias and zones) finds the unrouted connections.
 3. **Draw:** matplotlib draws everything.
 
-Made for NoctoBoard, a Klipper mainboard for a 1 m handmade delta printer.
+Made originally for NoctoBoard, a Klipper mainboard for a 1 m handmade delta printer. (will be used for future projeccts!!) 
